@@ -50,8 +50,8 @@ function fields_in_feed($content)
 // FEATURED IMAGES ON RSS FEEDS
 //---------------------------------------------------------------
 
-add_filter( 'rss2_item', 'bootstrap_base_attached_images' );
-function bootstrap_base_attached_images()
+add_filter( 'rss2_item', 'warmboot_base_attached_images' );
+function warmboot_base_attached_images()
 {
 	global $post;
 
@@ -78,9 +78,9 @@ function bootstrap_base_attached_images()
 	}
 }
 
-add_filter( 'rss2_ns', 'bootstrap_base_namespace' );
+add_filter( 'rss2_ns', 'warmboot_base_namespace' );
 
-function bootstrap_base_namespace()
+function warmboot_base_namespace()
 {
 	echo 'xmlns:media="http://search.yahoo.com/mrss/"
     xmlns:georss="http://www.georss.org/georss"';

@@ -12,10 +12,10 @@
 //---------------------------------------------------------------
 
 //Default WordPress settings
-add_action( 'after_setup_theme', 'bootstrap_base_theme_setup' );
-if ( !function_exists('bootstrap_base_theme_setup') ) {
+add_action( 'after_setup_theme', 'warmboot_base_theme_setup' );
+if ( !function_exists('warmboot_base_theme_setup') ) {
 
-	function bootstrap_base_theme_setup()
+	function warmboot_base_theme_setup()
 	{
 
 		//---------------------------------------------------------------

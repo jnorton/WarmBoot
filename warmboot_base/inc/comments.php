@@ -5,23 +5,23 @@
 
 //preprocess comments with nonce field to reduce comment spam
 //http://www.9bitstudios.com/2013/04/add-additional-comment-form-validation-in-wordpress/
-function bootstrap_base_additional_comment_validation($comment_data) {
+function warmboot_base_additional_comment_validation($comment_data) {
     if(!isset( $_POST['comment_nonce'] ) || !wp_verify_nonce( $_POST['comment_nonce'], 'nbs_comment_nonce' ))
         exit;
     else
         return $comment_data;
 }
-add_filter('preprocess_comment', 'bootstrap_base_additional_comment_validation');
+add_filter('preprocess_comment', 'warmboot_base_additional_comment_validation');
 
 // loading jquery reply elements on single pages automatically
-function bootstrap_base_queue_js() { if (!is_admin()) { if ( is_singular() and comments_open() and (get_option('thread_comments') == 1)) wp_enqueue_script( 'comment-reply' ); }
+function warmboot_base_queue_js() { if (!is_admin()) { if ( is_singular() and comments_open() and (get_option('thread_comments') == 1)) wp_enqueue_script( 'comment-reply' ); }
 }
 // reply on comments script
-add_action('wp_print_scripts', 'bootstrap_base_queue_js');
+add_action('wp_print_scripts', 'warmboot_base_queue_js');
 /************* COMMENT LAYOUT *********************/
 
 // Comment Layout
-function bootstrap_base_comments($comment, $args, $depth) {
+function warmboot_base_comments($comment, $args, $depth) {
 	$GLOBALS['comment'] = $comment; ?>
 	<li <?php comment_class(); ?>>
 		<article id="comment-<?php comment_ID(); ?>" class="clearfix comment">
@@ -34,7 +34,7 @@ function bootstrap_base_comments($comment, $args, $depth) {
 
                     <?php if ($comment->comment_approved == '0') : ?>
        					<div class="alert-message success">
-          				<p><?php _e('Your comment is awaiting moderation.', 'bootstrap_base'); ?></p>
+          				<p><?php _e('Your comment is awaiting moderation.', 'warmboot_base'); ?></p>
           				</div>
 					<?php endif; ?>
 
@@ -89,7 +89,7 @@ function comment_count( $count ) {
  * @author Keir Whitaker
  */
 
-	function bootstrap_base_comment( $comment, $args, $depth ) {
+	function warmboot_base_comment( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
 ?>
 		<?php if ( $comment->comment_approved == '1' ): ?>

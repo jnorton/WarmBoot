@@ -83,13 +83,13 @@ function get_template_parts( $parts = array() )
 // POSTED ON
 //---------------------------------------------------------------
 
-if ( ! function_exists( 'bootstrap_base_posted_on' ) ) :
+if ( ! function_exists( 'warmboot_base_posted_on' ) ) :
 	/**
 	 * Prints HTML with meta information for the current post-date/time and author.
 	 *
 	 * @since Twenty Ten 1.0
 	 */
-	function bootstrap_base_posted_on()
+	function warmboot_base_posted_on()
 	{
 
 		$blog_display_posted_on = get_theme_mod('blog_display_posted_on');
@@ -97,11 +97,11 @@ if ( ! function_exists( 'bootstrap_base_posted_on' ) ) :
 			return;
 		}
 
-		printf( __( '<div class="post-meta"><span class="%1$s">Posted by</span> %2$s <span class="meta-sep">on</span> %3$s</div>', 'bootstrap_base' ),
+		printf( __( '<div class="post-meta"><span class="%1$s">Posted by</span> %2$s <span class="meta-sep">on</span> %3$s</div>', 'warmboot_base' ),
 			'meta-prep meta-prep-author',
 			sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>',
 				get_author_posts_url( get_the_author_meta( 'ID' ) ),
-				sprintf( esc_attr__( 'View all posts by %s', 'bootstrap_base' ), get_the_author() ),
+				sprintf( esc_attr__( 'View all posts by %s', 'warmboot_base' ), get_the_author() ),
 				get_the_author()
 			),
 			sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><span class="entry-date">%3$s</span></a>',
@@ -117,13 +117,13 @@ endif;
 // POSTED IN
 //---------------------------------------------------------------
 
-if ( ! function_exists( 'bootstrap_base_posted_in' ) ) :
+if ( ! function_exists( 'warmboot_base_posted_in' ) ) :
 	/**
 	 * Prints HTML with meta information for the current post (category, tags and permalink).
 	 *
 	 * @since Twenty Ten 1.0
 	 */
-	function bootstrap_base_posted_in()
+	function warmboot_base_posted_in()
 	{
 
 		$blog_display_posted_in = get_theme_mod('blog_display_posted_in');
@@ -144,11 +144,11 @@ if ( ! function_exists( 'bootstrap_base_posted_in' ) ) :
 		// Retrieves tag list of current post, separated by commas.
 		$tag_list = get_the_tag_list( '', ', ' );
 		if ( $tag_list ) {
-			$posted_in = __( '<div class="posted-in">This entry was posted in %1$s and tagged '.$tag.'%2$s. '.$bookmark.'Bookmark this <a href="%3$s" title="%4$s" rel="bookmark">page</a>.</div>', 'bootstrap_base' );
+			$posted_in = __( '<div class="posted-in">This entry was posted in %1$s and tagged '.$tag.'%2$s. '.$bookmark.'Bookmark this <a href="%3$s" title="%4$s" rel="bookmark">page</a>.</div>', 'warmboot_base' );
 		} elseif ( is_object_in_taxonomy( get_post_type(), 'category' ) ) {
-			$posted_in = __( '<div class="posted-in">This entry was posted in %1$s. '.$bookmark.'Bookmark this <a href="%3$s" title="%4$s" rel="bookmark">page</a>.</div>', 'bootstrap_base' );
+			$posted_in = __( '<div class="posted-in">This entry was posted in %1$s. '.$bookmark.'Bookmark this <a href="%3$s" title="%4$s" rel="bookmark">page</a>.</div>', 'warmboot_base' );
 		} else {
-			$posted_in = __( '<div class="posted-in">'.$bookmark.'Bookmark this <a href="%3$s" title=" %4$s" rel="bookmark">page</a>.</div>', 'bootstrap_base' );
+			$posted_in = __( '<div class="posted-in">'.$bookmark.'Bookmark this <a href="%3$s" title=" %4$s" rel="bookmark">page</a>.</div>', 'warmboot_base' );
 		}
 		// Prints the string, replacing the placeholders.
 		printf(

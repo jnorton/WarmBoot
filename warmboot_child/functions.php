@@ -11,7 +11,7 @@
 // SITE SETTINGS
 //---------------------------------------------------------------
 
-$site_settings = get_option("bootstrap_base_site_settings");
+$site_settings = get_option("warmboot_base_site_settings");
 if (!defined('ROOT_URL')) {
 	define('ROOT_URL', $site_settings['root_url']);
 }
@@ -48,10 +48,10 @@ function custom_image_sizes_choose( $sizes )
 }
 
 //Default WordPress settings
-add_action( 'after_setup_theme', 'bootstrap_base_theme_setup' );
-if ( !function_exists('bootstrap_base_theme_setup') ) {
+add_action( 'after_setup_theme', 'warmboot_base_theme_setup' );
+if ( !function_exists('warmboot_base_theme_setup') ) {
 
-	function bootstrap_base_theme_setup()
+	function warmboot_base_theme_setup()
 	{
 
 		//---------------------------------------------------------------

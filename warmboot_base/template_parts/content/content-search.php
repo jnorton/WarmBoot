@@ -1,7 +1,7 @@
 <?php
 /* Search Content */
 ?>
-<h1><?php printf( __( 'Search Results for: %s', 'bootstrap_base' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+<h1><?php printf( __( 'Search Results for: %s', 'warmboot_base' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
 <div class="search-results">
 <?php
 if(!function_exists('relevanssi_init')){
