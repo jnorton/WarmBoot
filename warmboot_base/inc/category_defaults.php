@@ -6,7 +6,7 @@
 
 add_filter('category_link', 'no_category_parents',1000,2);
 function no_category_parents($catlink, $category_id) {
-    $category = &get_category( $category_id );
+    $category = get_category( $category_id );
     if ( is_wp_error( $category ) )
         return $category;
     $category_nicename = $category->slug;
