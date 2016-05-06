@@ -41,11 +41,11 @@ add_action( 'admin_init', 'lock_themes' );
 function lock_themes()
 {
 	global $submenu, $userdata;
-	if ( $userdata->ID != 1 ) {
+	if ( isset($userdata) && is_object($userdata) && $userdata->ID != 1 ) {
 		unset( $submenu['themes.php'][5] );
 		unset( $submenu['themes.php'][15] );
 
-		if ($_GET['access_error']) {
+		if (isset($_GET['access_error'])) {
 			add_action('admin_notices', 'page_access_admin_notice');
 		}
 
