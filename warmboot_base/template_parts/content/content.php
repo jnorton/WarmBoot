@@ -29,10 +29,8 @@
 		<div class="thumb">
 			<a href="<?php esc_url( the_permalink() ); ?>" title="<?php the_title(); ?>" rel="bookmark">
 			<?php
-				$img = get_the_post_thumbnail($post_id, 'listing-thumb');
-				$img_id = get_post_thumbnail_id( $post_id );
-				echo responsive_images($img, $img_id);
-				?>
+				the_post_thumbnail();
+			?>
 			</a>
 		</div>
 		<?php
