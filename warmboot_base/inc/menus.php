@@ -43,7 +43,7 @@ class twitter_bootstrap_nav_walker extends Walker_Nav_Menu {
 	 * @param string $output Passed by reference. Used to append additional content.
 	 * @param int $depth Depth of page. Used for padding.
 	 */
-	public function start_lvl( &$output, $depth )
+	public function start_lvl( &$output, $depth = 0, $args = Array )
 	{
 		$indent = str_repeat( "\t", $depth );
 		$output    .= "\n$indent<ul>\n";
@@ -56,7 +56,7 @@ class twitter_bootstrap_nav_walker extends Walker_Nav_Menu {
 	 * @param string $output Passed by reference. Used to append additional content.
 	 * @param int $depth Depth of page. Used for padding.
 	 */
-	public function end_lvl( &$output, $depth )
+	public function end_lvl( &$output, $depth = 0, $args = Array )
 	{
 		$indent = str_repeat( "\t", $depth );
 		$output    .= "\n$indent</ul>\n";
