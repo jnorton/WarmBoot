@@ -66,7 +66,6 @@ if ( !function_exists('warmboot_base_theme_setup') ) {
 		require_once get_template_directory()."/inc/menus.php"; //custom menus
 		require_once get_template_directory()."/inc/users.php"; //wordpress users functionality
 		require_once get_template_directory()."/inc/feeds.php"; //feeds for rss and others
-		require_once get_template_directory()."/inc/tinymce.php"; //feeds for rss and others
 		require_once get_template_directory()."/inc/cpt_defaults.php"; //custom post type defaults
 
 		//extra functionality
@@ -83,6 +82,7 @@ if ( !function_exists('warmboot_base_theme_setup') ) {
 			NOTE: this allows child themes to use additional
 			includes for sit e and UI specific requirements.
 		*/
+		require_once get_stylesheet_directory()."/inc/tinymce.php"; //feeds for rss and others
 		require_once get_stylesheet_directory()."/inc/child_theme_helpers.php"; //support post type
 
 
