@@ -32,28 +32,47 @@ function get_category_id( $cat_name )
 }
 
 //---------------------------------------------------------------
-// GET ROOT TERM / PARENT FOR POST
+// GET ROOT TERM PARENT FOR POST
 //---------------------------------------------------------------
 
 function get_post_root_term($post_id, $taxonomy = 'category') {
-    $cats = wp_get_post_terms($post_id, $taxonomy); // category object
-    $top_cat_obj = array();
-	$obj_ancestors = array();
+    $terms = wp_get_post_terms($post_id, $taxonomy); // category object
+    $root_term_obj = array();
+	$term_ancestors = array();
     //loop through cats to retrieve parent
-    foreach($cats as $cat) {
-        if ($cat->parent == 0) {
-            $top_cat_obj = $cat;
+    foreach($terms as $term) {
+        if ($term->parent == 0) {
+            $root_term_obj = $term;
             break;
         }
     }
     //if post doesn't isn't assigned to the parent category get the category ancestors
-    if(empty($top_cat_obj)){
-	    $obj_ancestors = get_ancestors($cats[0]->term_id, $taxonomy);
-	    $top_ancestor_id = array_pop($obj_ancestors);
-	    $top_cat_obj = get_term($top_ancestor_id, $taxonomy);
+    if(empty($root_term_obj)){
+	    $term_ancestors = get_ancestors($terms[0]->term_id, $taxonomy);
+	    $root_ancestor_id = array_pop($term_ancestors);
+	    $root_term_obj = get_term($root_ancestor_id, $taxonomy);
     }
 
-    return $top_cat_obj;
+    return $root_term_obj;
+}
+
+//---------------------------------------------------------------
+// GET TERM ROOT
+//---------------------------------------------------------------
+
+function get_root_term($term_id, $taxonomy = 'category') {
+	//get term ancestors
+    $term_ancestors = get_ancestors($term_id, $taxonomy);
+    //if term has ancestors, get the root
+    //else get the current term as that will be the root term
+    if(!empty($term_ancestors)){
+	    $root_term_id = array_pop($term_ancestors);
+		$root_term = get_term($root_term_id, $taxonomy);
+    } else {
+	    $root_term = get_term($term_id, $taxonomy);
+    }
+
+    return $root_term;
 }
 
 //---------------------------------------------------------------
