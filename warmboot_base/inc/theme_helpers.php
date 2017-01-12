@@ -32,10 +32,10 @@ function get_category_id( $cat_name )
 }
 
 //---------------------------------------------------------------
-// GET ROOT TERM PARENT FOR POST
+// GET ROOT TERM / PARENT FOR POST
 //---------------------------------------------------------------
 
-function get_post_term_root($post_id, $taxonomy = 'category') {
+function get_post_root_term($post_id, $taxonomy = 'category') {
     $cats = wp_get_post_terms($post_id, $taxonomy); // category object
     $top_cat_obj = array();
 	$obj_ancestors = array();
