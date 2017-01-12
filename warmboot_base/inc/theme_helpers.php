@@ -32,6 +32,31 @@ function get_category_id( $cat_name )
 }
 
 //---------------------------------------------------------------
+// GET ROOT TERM PARENT FOR POST
+//---------------------------------------------------------------
+
+function get_post_term_root($post_id, $taxonomy = 'category') {
+    $cats = wp_get_post_terms($post_id, $taxonomy); // category object
+    $top_cat_obj = array();
+	$obj_ancestors = array();
+    //loop through cats to retrieve parent
+    foreach($cats as $cat) {
+        if ($cat->parent == 0) {
+            $top_cat_obj = $cat;
+            break;
+        }
+    }
+    //if post doesn't isn't assigned to the parent category get the category ancestors
+    if(empty($top_cat_obj)){
+	    $obj_ancestors = get_ancestors($cats[0]->term_id, $taxonomy);
+	    $top_ancestor_id = array_pop($obj_ancestors);
+	    $top_cat_obj = get_term($top_ancestor_id, $taxonomy);
+    }
+
+    return $top_cat_obj;
+}
+
+//---------------------------------------------------------------
 // Append page slugs to the body class
 //---------------------------------------------------------------
 
