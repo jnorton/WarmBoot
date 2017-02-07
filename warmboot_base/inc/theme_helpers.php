@@ -523,7 +523,7 @@ add_filter('wp_editor_set_quality', function($quality)
 // CUSTOM FUNCTION TO RETURN IMAGE CAPTION/S
 //---------------------------------------------------------------
 
-function the_post_thumbnail_caption()
+function wb_post_thumbnail_caption()
 {
 	global $post;
 
